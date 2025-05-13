@@ -1,349 +1,307 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            text-align: center;
-            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-            color: white;
-            animation: fadeIn 2s ease-in-out;
-            scroll-behavior: smooth;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Portfolio - M.Uma Maheswari</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: white;
+      scroll-behavior: smooth;
+      text-align: center;
+    }
 
-        /* Navbar */
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(0, 0, 0, 0.8);
-            padding: 15px 20px;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            animation: slideDown 1s ease-in-out;
-        }
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(0, 0, 0, 0.85);
+      padding: 15px 20px;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      animation: slideDown 1s ease-in-out;
+    }
 
-        .nav-links {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+    .nav-links {
+      display: flex;
+      justify-content: center;
+    }
 
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            padding: 14px 20px;
-            margin: 0 10px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            transition: background 0.3s, transform 0.3s;
-        }
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      padding: 14px 20px;
+      margin: 0 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+      transition: background 0.3s, transform 0.3s;
+    }
 
-        .nav-links a:hover {
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 5px;
-            transform: scale(1.1);
-        }
+    .nav-links a:hover {
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 5px;
+      transform: scale(1.1);
+    }
 
-        /* Hamburger menu */
-        .menu-toggle {
-            display: none;
-            font-size: 2rem;
-            color: white;
-            cursor: pointer;
-        }
+    .menu-toggle {
+      display: none;
+      font-size: 2rem;
+      color: white;
+      cursor: pointer;
+    }
 
-        @media (max-width: 768px) {
-            .menu-toggle {
-                display: block;
-            }
+    @media (max-width: 768px) {
+      .menu-toggle { display: block; }
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.95);
+        position: absolute;
+        top: 60px;
+        left: 0;
+      }
+      .nav-links.active { display: flex; }
+      .nav-links a {
+        padding: 15px;
+        border-bottom: 1px solid rgba(255,255,255,0.2);
+      }
+    }
 
-            .nav-links {
-                display: none;
-                flex-direction: column;
-                width: 100%;
-                background-color: rgba(0, 0, 0, 0.9);
-                position: absolute;
-                top: 60px;
-                left: 0;
-            }
+    header, section {
+      padding: 90px 20px 30px;
+      animation: fadeInUp 1.5s ease-in-out;
+    }
 
-            .nav-links a {
-                padding: 15px;
-                text-align: center;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            }
+    h1 {
+      font-size: 3rem;
+      letter-spacing: 1px;
+      animation: slideInFromLeft 1s ease-out forwards;
+    }
 
-            .nav-links.active {
-                display: flex;
-            }
-        }
+    .designation {
+      font-size: 1.4rem;
+      margin-top: 10px;
+      color: #f1c40f;
+      font-weight: 600;
+      animation: slideInFromRight 1.5s ease-out forwards;
+    }
 
-        header, section {
-            display: block;
-            padding: 80px 20px 30px;
-            animation: fadeInUp 1.5s ease-in-out;
-        }
+    .about-container {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+      max-width: 90%;
+      margin: auto;
+    }
 
-        h1 {
-            font-size: 3rem;
-            letter-spacing: 2px;
-            animation: slideInFromLeft 1s ease-out forwards;
-        }
+    .about-box {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 30px;
+      border-radius: 12px;
+      flex: 1;
+      min-width: 280px;
+      text-align: justify;
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease-in-out;
+    }
 
-        .designation {
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin-top: 10px;
-            color: #f1c40f;
-            letter-spacing: 1px;
-            animation: slideInFromRight 1.5s ease-out forwards;
-        }
+    .about-box:hover {
+      transform: translateY(-10px);
+    }
 
-        .about-container {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            flex-wrap: wrap;
-            max-width: 80%;
-            margin: auto;
-        }
+    .about-box h3 {
+      color: #f1c40f;
+      margin-top: 20px;
+    }
 
-        .about-box {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 30px;
-            border-radius: 10px;
-            flex: 1;
-            min-width: 300px;
-            text-align: justify;
-            line-height: 1.8;
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease-in-out;
-        }
+    ul {
+      padding-left: 20px;
+      text-align: left;
+    }
 
-        .about-box:hover {
-            transform: translateY(-10px);
-        }
+    .project-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      max-width: 90%;
+      margin: auto;
+    }
 
-        .about-box h3 {
-            margin-top: 20px;
-            font-size: 1.25rem;
-            color: #f1c40f;
-        }
+    .project-card {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 20px;
+      border-radius: 10px;
+      width: 300px;
+      transition: transform 0.4s ease-in-out;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    }
 
-        .project-grid {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            max-width: 80%;
-            margin: auto;
-        }
+    .project-card:hover {
+      transform: scale(1.05) rotate(1deg);
+    }
 
-        .project-card {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 20px;
-            margin: 10px;
-            border-radius: 10px;
-            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-            width: 300px;
-            text-align: center;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-            animation: fadeInUp 1.5s ease-out forwards;
-        }
+    .project-card img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
 
-        .project-card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        }
+    .project-description {
+      text-align: justify;
+      line-height: 1.6;
+      font-size: 0.95rem;
+    }
 
-        .project-card img {
-            width: 100%;
-            border-radius: 10px;
-            margin-bottom: 10px;
-            transition: transform 0.3s ease-in-out;
-        }
+    footer {
+      background: rgba(0, 0, 0, 0.85);
+      padding: 12px 0;
+      margin-top: 30px;
+    }
 
-        .project-card img:hover {
-            transform: scale(1.1);
-        }
+    .contact-info p, .contact-info a {
+      color: #f1c40f;
+      margin: 5px;
+      font-weight: 500;
+    }
 
-        .project-description {
-            margin-top: 10px;
-            line-height: 1.6;
-            text-align: justify;
-        }
+    .contact-info a:hover {
+      color: #ffffff;
+    }
 
-        footer {
-            background: rgba(0, 0, 0, 0.8);
-            color: white;
-            text-align: center;
-            padding: 10px 0;
-            width: 100%;
-            animation: fadeIn 2s ease-in;
-            position: relative;
-            bottom: 0;
-            margin-top: 20px;
-        }
+    .social-links a {
+      font-size: 1.3rem;
+      margin: 0 10px;
+      color: #f1c40f;
+      text-decoration: none;
+      transition: 0.3s;
+    }
 
-        #contact .contact-info {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-        }
+    .social-links a:hover {
+      color: white;
+    }
 
-        #contact .contact-info p {
-            font-size: 1rem;
-            margin: 5px;
-        }
+    /* Animations */
+    @keyframes fadeInUp {
+      from {opacity: 0; transform: translateY(50px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
 
-        #contact .contact-info a {
-            color: #f1c40f;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
+    @keyframes slideInFromLeft {
+      from {opacity: 0; transform: translateX(-100%);}
+      to {opacity: 1; transform: translateX(0);}
+    }
 
-        #contact .contact-info a:hover {
-            color: #fff;
-        }
+    @keyframes slideInFromRight {
+      from {opacity: 0; transform: translateX(100%);}
+      to {opacity: 1; transform: translateX(0);}
+    }
 
-        .social-links {
-            margin-top: 10px;
-            text-align: center;
-        }
-
-        .social-links a {
-            margin: 0 15px;
-            font-size: 1.5rem;
-            color: #f1c40f;
-            transition: color 0.3s ease-in-out;
-        }
-
-        .social-links a:hover {
-            color: #fff;
-        }
-
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        @keyframes slideDown {
-            from { transform: translateY(-50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(50px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes slideInFromLeft {
-            from { transform: translateX(-100%); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
-        }
-
-        @keyframes slideInFromRight {
-            from { transform: translateX(100%); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
-        }
-    </style>
+    @keyframes slideDown {
+      from {transform: translateY(-50px); opacity: 0;}
+      to {transform: translateY(0); opacity: 1;}
+    }
+  </style>
 </head>
 <body>
 
-    <!-- Navbar -->
-    <nav class="navbar">
-        <div class="menu-toggle" id="mobile-menu">&#9776;</div>
-        <div class="nav-links" id="nav-links">
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#projects">Projects</a>
-            <a href="#contact">Contact</a>
-        </div>
-    </nav>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="menu-toggle" id="mobile-menu">&#9776;</div>
+    <div class="nav-links" id="nav-links">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
 
-    <header id="home" class="content-section">
-        <h1>Hi, I'm M.Uma Maheswari</h1>
-        <div class="designation">Web Developer | Developer | Coder</div>
-    </header>
+  <header id="home">
+    <h1>Hi, I'm M.Uma Maheswari</h1>
+    <div class="designation">Web Developer | Developer | Coder</div>
+  </header>
 
-    <section id="about" class="content-section">
-        <h2>About Me</h2>
-        <div class="about-container">
-            <div class="about-box">
-                <p>Enthusiastic M.Sc. Computer Science fresher with a strong knowledge of Java programming and software development. Eager to kickstart a career as a Web Developer or Software Developer. Passionate about problem-solving, learning new technologies, and contributing to innovative software solutions.</p>
-            </div>
-            <div class="about-box">
-                <h3>Skills</h3>
-                <ul>
-                    <li>Python</li>
-                    <li>HTML, CSS, JavaScript</li>
-                    <li>Database Management (MySQL)</li>
-                    <li>Problem Solving</li>
-                    <li>Type Writing</li>
-                </ul>
-            </div>
-        </div>
-    </section>
+  <section id="about">
+    <h2>About Me</h2>
+    <div class="about-container">
+      <div class="about-box">
+        <p>Enthusiastic M.Sc. Computer Science fresher with a passion for software development and creative web design. Skilled in Java, Python, and frontend technologies. Eager to contribute to meaningful projects and continuously grow in a challenging development role.</p>
+      </div>
+      <div class="about-box">
+        <h3>Skills</h3>
+        <ul>
+          <li>Python, Java</li>
+          <li>HTML, CSS, JavaScript</li>
+          <li>MySQL, Database Management</li>
+          <li>Problem Solving</li>
+          <li>Typewriting (Govt. Certified)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
-    <section id="projects" class="content-section">
-        <h2>Projects</h2>
-        <div class="project-grid">
-            <div class="project-card">
-                <img src="images/covid_project.jpg" alt="COVID-19 Project">
-                <h3>COVID-19 Testing And Reporting Management System</h3>
-                <p class="project-description">A web-based application designed to streamline the process of managing and generating COVID-19 test reports.</p>
-            </div>
-            <div class="project-card">
-                <img src="images/Sign_language.jpg" alt="Sign Language Interaction System">
-                <h3>Sign Language Interaction System</h3>
-                <p class="project-description">An AI-powered system that translates sign language gestures into readable text, helping visually impaired users communicate.</p>
-            </div>
-            <div class="project-card">
-                <img src="images/smoke.jpg" alt="Smoke Detector System">
-                <h3>Smoke Detector System</h3>
-                <p class="project-description">Detects smoke and alerts users in real-time to prevent fire hazards in homes, offices, or public spaces.</p>
-            </div>
-            <div class="project-card">
-                <img src="images/security.jpg" alt="Security Header Evaluator">
-                <h3>Security Header Evaluator</h3>
-                <p class="project-description">Evaluates security headers of websites using Django (backend) and React (frontend), and generates PDF reports for auditing.</p>
-            </div>
-        </div>
-    </section>
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="project-grid">
+      <div class="project-card">
+        <img src="images/covid_project.jpg" alt="COVID-19 Project">
+        <h3>COVID-19 Testing & Reporting System</h3>
+        <p class="project-description">Web-based tool that simplifies COVID-19 test registration, result management, and report generation with secure login and automated alerts.</p>
+      </div>
+      <div class="project-card">
+        <img src="images/Sign_language.jpg" alt="Sign Language System">
+        <h3>Sign Language Interaction System</h3>
+        <p class="project-description">Uses AI/ML models and a webcam interface to translate sign gestures into readable text, helping improve communication for the hearing impaired.</p>
+      </div>
+      <div class="project-card">
+        <img src="images/smoke.jpg" alt="Smoke Detector">
+        <h3>Smoke Detector System</h3>
+        <p class="project-description">Monitors air quality and detects smoke particles in real-time. Sends alert messages and buzzer warnings to avoid fire risks.</p>
+      </div>
+      <div class="project-card">
+        <img src="images/security.jpg" alt="Security Evaluator">
+        <h3>Security Header Evaluator</h3>
+        <p class="project-description">Django & React-based platform that evaluates HTTP headers for web security, offers score insights, and auto-generates PDF reports for audits.</p>
+      </div>
+      <div class="project-card">
+        <img src="images/excel.jpg" alt="Excel Analyzer">
+        <h3>Excel-Analysis Platform</h3>
+        <p class="project-description">A Python-based tool that reads Excel files, analyzes patterns using Pandas, and visualizes data using graphs for quick insights and reports.</p>
+      </div>
+    </div>
+  </section>
 
-    <section id="contact" class="content-section">
-        <h2>Contact</h2>
-        <div class="contact-info">
-            <p><strong>Email:</strong> <a href="mailto:umamaheswari062131@gmail.com">umamaheswari062131@gmail.com</a></p>
-            <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/uma-maheswari-4923b9308/" target="_blank">My LinkedIn Profile</a></p>
-        </div>
-    </section>
+  <section id="contact">
+    <h2>Contact</h2>
+    <div class="contact-info">
+      <p><strong>Email:</strong> <a href="mailto:umamaheswari062131@gmail.com">umamaheswari062131@gmail.com</a></p>
+      <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/uma-maheswari-4923b9308/" target="_blank">My LinkedIn</a></p>
+    </div>
+  </section>
 
-    <footer>
-        <p>&copy; M.Uma Maheswari</p>
-        <div class="social-links">
-            <a href="https://github.com/Uma-0621" target="_blank">GitHub</a>
-        </div>
-    </footer>
+  <footer>
+    <p>&copy; M.Uma Maheswari</p>
+    <div class="social-links">
+      <a href="https://github.com/Uma-0621" target="_blank">GitHub</a>
+    </div>
+  </footer>
 
-    <script>
-        const mobileMenu = document.getElementById('mobile-menu');
-        const navLinks = document.getElementById('nav-links');
+  <script>
+    const mobileMenu = document.getElementById('mobile-menu');
+    const navLinks = document.getElementById('nav-links');
+    mobileMenu.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+  </script>
 
-        mobileMenu.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
-    </script>
 </body>
 </html>
