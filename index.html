@@ -17,22 +17,10 @@
       font-size: 16px;
     }
 
-    h1 {
-      font-size: 2.5rem;
-    }
-
-    h2 {
-      font-size: 2rem;
-    }
-
-    h3 {
-      font-size: 1.3rem;
-    }
-
-    p, li {
-      font-size: 1rem;
-      line-height: 1.6;
-    }
+    h1 { font-size: 2.5rem; }
+    h2 { font-size: 2rem; }
+    h3 { font-size: 1.3rem; }
+    p, li { font-size: 1rem; line-height: 1.6; }
 
     .navbar {
       display: flex;
@@ -246,7 +234,7 @@
     <h1>M.Uma Maheswari</h1>
     <div class="typewriter-text">Web Developer | Python Enthusiast | Problem Solver</div>
     <br />
-    <a class="btn-resume" href="resume.pdf" download>Download Resume</a>
+    <a class="btn-resume" href="./assets/resume.pdf" download>Download Resume</a>
   </header>
 
   <!-- About -->
@@ -261,9 +249,9 @@
         <ul>
           <li>Python</li>
           <li>Front end: HTML, CSS, JavaScript</li>
-          <li>Backend: MySQL </li>
-          <li>Tools: Github </li>
-          <li>Design: Figma </li>
+          <li>Backend: MySQL</li>
+          <li>Tools: Github</li>
+          <li>Design: Figma</li>
           <li>Typewriting Certified</li>
           <li>Strong communication & teamwork</li>
         </ul>
@@ -278,27 +266,27 @@
       <div class="project-card">
         <img src="images/covid_project.jpg" alt="COVID-19 Project">
         <h3>COVID-19 Testing System</h3>
-        <p>A complete solution for managing COVID test appointments, generating results, and notifying users via SMS & email.</p>
+        <p>Manages COVID test appointments, results, and notifications via SMS & email.</p>
       </div>
       <div class="project-card">
         <img src="images/Sign_language.jpg" alt="Sign Language System">
         <h3>Sign Language Interaction</h3>
-        <p>Uses real-time hand gesture recognition and machine learning to translate signs into readable text, aiding communication for the deaf.</p>
+        <p>Translates hand gestures to text using real-time ML models for the deaf community.</p>
       </div>
       <div class="project-card">
         <img src="images/smoke.jpg" alt="Smoke Detector">
         <h3>IoT Smoke Detection</h3>
-        <p>Smart sensor-based detection with real-time alerts to prevent fire hazards in homes and offices.</p>
+        <p>Real-time smoke alert system using smart sensors for homes and offices.</p>
       </div>
       <div class="project-card">
         <img src="images/security.jpg" alt="Security Evaluator">
         <h3>HTTP Security Evaluator</h3>
-        <p>Analyzes web headers and provides security scoring and PDF reports for developers and testers.</p>
+        <p>Analyzes website headers, scores security level, and generates PDF reports.</p>
       </div>
       <div class="project-card">
         <img src="images/excel.jpg" alt="Excel Analyzer">
         <h3>Excel Data Analyzer</h3>
-        <p>Python-based desktop tool to visualize Excel sheet data using Pandas and Matplotlib for insights.</p>
+        <p>Python GUI tool to visualize Excel data using Pandas and Matplotlib.</p>
       </div>
     </div>
   </section>
@@ -307,7 +295,7 @@
   <section id="contact">
     <h2>Contact Me</h2>
     <div class="contact-form">
-      <form action="https://formspree.io/f/your-form-id" method="POST">
+      <form action="https://formspree.io/f/REPLACE_WITH_YOUR_FORM_ID" method="POST">
         <input type="text" name="name" placeholder="Your Name" required />
         <input type="email" name="_replyto" placeholder="Your Email" required />
         <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
@@ -328,8 +316,15 @@
   <script>
     const mobileMenu = document.getElementById('mobile-menu');
     const navLinks = document.getElementById('nav-links');
+
     mobileMenu.addEventListener('click', () => {
       navLinks.classList.toggle('active');
+    });
+
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+      });
     });
   </script>
 </body>
